@@ -36,9 +36,10 @@ async function getDownloadsForWeek(
 // Function to get weekly downloads from Sunday to Sunday for the past 6 weeks for a given npm package
 async function getWeeklyDownloadsSundayToSunday(
   packageName: string
-): Promise<void> {
+): Promise<number[]> {
   const today = new Date();
   const mostRecentSunday = findMostRecentSunday(today);
+  const weeklyDownloads = [];
 
   for (let i = 0; i < 6; i++) {
     // Calculate the start and end dates for each week (Sunday to Sunday)
@@ -53,12 +54,15 @@ async function getWeeklyDownloadsSundayToSunday(
       formatDate(start),
       formatDate(end)
     );
+    weeklyDownloads.push(downloads);
     console.log(
       `Week ${i + 1} (${formatDate(start)} to ${formatDate(
         end
       )}): ${downloads} downloads`
     );
   }
+
+  return weeklyDownloads;
 }
 
 async function getD() {
@@ -74,10 +78,26 @@ async function getD() {
     "@sd-jwt/hash",
   ];
 
+  const weeklyTotalDownloads = Array(6).fill(0);
+
   for (const packageName of packages) {
     console.log(`\nPackage: ${packageName}`);
-    await getWeeklyDownloadsSundayToSunday(packageName);
+    const weeklyDownloads = await getWeeklyDownloadsSundayToSunday(packageName);
+    for (let i = 0; i < weeklyDownloads.length; i++) {
+      weeklyTotalDownloads[i] += weeklyDownloads[i];
+    }
   }
+
+  console.log("\nWeekly Total Downloads for All Packages:");
+  weeklyTotalDownloads.forEach((total, index) => {
+    console.log(`Week ${index + 1}: ${total}`);
+  });
+
+  const totalDownloads = weeklyTotalDownloads.reduce(
+    (acc, val) => acc + val,
+    0
+  );
+  console.log(`\nTotal Downloads for All Packages: ${totalDownloads}`);
 }
 
 getD();
