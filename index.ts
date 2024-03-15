@@ -5,12 +5,10 @@ function formatDate(date: Date): string {
   return date.toISOString().split("T")[0];
 }
 
-// Helper function to find the most recent Sunday before or on the given date
+// Helper function to find the most recent Sunday from a given date
 function findMostRecentSunday(date: Date): Date {
-  const currentDayOfWeek = date.getDay();
-  const daysToAdd = currentDayOfWeek === 0 ? 7 : currentDayOfWeek;
   const result = new Date(date);
-  result.setDate(result.getDate() - daysToAdd + 1);
+  result.setDate(result.getDate() - result.getDay());
   return result;
 }
 
@@ -35,40 +33,32 @@ async function getDownloadsForWeek(
   }
 }
 
-// Function to get weekly downloads from yesterday to yesterday for the past 6 weeks for a given npm package
-async function getWeeklyDownloadsFromYesterday(
+// Function to get weekly downloads from Sunday to Sunday for the past 6 weeks for a given npm package
+async function getWeeklyDownloadsSundayToSunday(
   packageName: string
-): Promise<number[]> {
+): Promise<void> {
   const today = new Date();
-  const endDate = new Date(today);
-  endDate.setDate(today.getDate() - 1); // Yesterday
-  const startDate = new Date(endDate);
-  startDate.setDate(endDate.getDate() - 6); // Go back one week
-
-  const weeklyDownloads = [];
+  const mostRecentSunday = findMostRecentSunday(today);
 
   for (let i = 0; i < 6; i++) {
-    // Calculate the start and end dates for each week (Yesterday to Yesterday)
-    const start = new Date(startDate);
-    start.setDate(startDate.getDate() - i * 7); // Go back i weeks
+    // Calculate the start and end dates for each week (Sunday to Sunday)
+    const start = new Date(mostRecentSunday);
+    start.setDate(mostRecentSunday.getDate() - i * 7);
 
-    const end = new Date(endDate);
-    end.setDate(endDate.getDate() - i * 7); // Go back i weeks
+    const end = new Date(start);
+    end.setDate(start.getDate() + 6);
 
     const downloads = await getDownloadsForWeek(
       packageName,
       formatDate(start),
       formatDate(end)
     );
-    weeklyDownloads.push(downloads);
     console.log(
       `Week ${i + 1} (${formatDate(start)} to ${formatDate(
         end
       )}): ${downloads} downloads`
     );
   }
-
-  return weeklyDownloads;
 }
 
 async function getD() {
@@ -84,20 +74,10 @@ async function getD() {
     "@sd-jwt/hash",
   ];
 
-  const weeklyTotalDownloads = Array(6).fill(0);
-
   for (const packageName of packages) {
     console.log(`\nPackage: ${packageName}`);
-    const weeklyDownloads = await getWeeklyDownloadsFromYesterday(packageName);
-    for (let i = 0; i < weeklyDownloads.length; i++) {
-      weeklyTotalDownloads[i] += weeklyDownloads[i];
-    }
+    await getWeeklyDownloadsSundayToSunday(packageName);
   }
-
-  console.log("\nWeekly Total Downloads for All Packages:");
-  weeklyTotalDownloads.forEach((total, index) => {
-    console.log(`Week ${index + 1}: ${total}`);
-  });
 }
 
 getD();
