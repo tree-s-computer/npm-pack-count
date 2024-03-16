@@ -1,7 +1,7 @@
 export const WEEK_NUM = 6;
 export const PACKAGES = [
   "@sd-jwt/crypto-nodejs",
-  // "@sd-jwt/crypto-browser",
+  "@sd-jwt/crypto-browser",
   // "@sd-jwt/core",
   // "@sd-jwt/sd-jwt-vc",
   // "@sd-jwt/utils",
