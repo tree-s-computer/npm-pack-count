@@ -1,5 +1,18 @@
 import axios from "axios";
 
+const weekNum = 6; //get the number of weeks of downloads
+const packages = [
+  "@sd-jwt/crypto-nodejs",
+  "@sd-jwt/crypto-browser",
+  "@sd-jwt/core",
+  "@sd-jwt/sd-jwt-vc",
+  "@sd-jwt/utils",
+  "@sd-jwt/types",
+  "@sd-jwt/decode",
+  "@sd-jwt/present",
+  "@sd-jwt/hash",
+]; //A collection of padkeys to import
+
 // Helper function to format a Date object as YYYY-MM-DD
 function formatDate(date: Date): string {
   return date.toISOString().split("T")[0];
@@ -37,7 +50,8 @@ async function getDownloadsForWeek(
 
 // Function to get weekly downloads from yesterday to yesterday for the past 6 weeks for a given npm package
 async function getWeeklyDownloadsFromYesterday(
-  packageName: string
+  packageName: string,
+  weekNum: number
 ): Promise<number[]> {
   const today = new Date();
   const endDate = new Date(today);
@@ -47,7 +61,7 @@ async function getWeeklyDownloadsFromYesterday(
 
   const weeklyDownloads = [];
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < weekNum; i++) {
     // Calculate the start and end dates for each week (Yesterday to Yesterday)
     const start = new Date(startDate);
     start.setDate(startDate.getDate() - i * 7); // Go back i weeks
@@ -71,24 +85,15 @@ async function getWeeklyDownloadsFromYesterday(
   return weeklyDownloads;
 }
 
-async function getD() {
-  const packages = [
-    "@sd-jwt/crypto-nodejs",
-    "@sd-jwt/crypto-browser",
-    "@sd-jwt/core",
-    "@sd-jwt/sd-jwt-vc",
-    "@sd-jwt/utils",
-    "@sd-jwt/types",
-    "@sd-jwt/decode",
-    "@sd-jwt/present",
-    "@sd-jwt/hash",
-  ];
-
-  const weeklyTotalDownloads = Array(6).fill(0);
+async function getD(packages: string[], weekNum: number) {
+  const weeklyTotalDownloads = Array(weekNum).fill(0);
 
   for (const packageName of packages) {
     console.log(`\nPackage: ${packageName}`);
-    const weeklyDownloads = await getWeeklyDownloadsFromYesterday(packageName);
+    const weeklyDownloads = await getWeeklyDownloadsFromYesterday(
+      packageName,
+      weekNum
+    );
     for (let i = 0; i < weeklyDownloads.length; i++) {
       weeklyTotalDownloads[i] += weeklyDownloads[i];
     }
@@ -100,4 +105,4 @@ async function getD() {
   });
 }
 
-getD();
+getD(packages, weekNum);
