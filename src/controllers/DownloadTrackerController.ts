@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Packages } from "../models/Package";
-import { URL } from "../data";
-import { formatDate } from "../util";
-import { OutputView } from "../views/OutputView";
+import { URL } from "@/data";
+import { formatDate } from "@/util";
+import { OutputView } from "@/views/OutputView";
 
 export default class DownloadTracker {
   packages: string[];
@@ -46,10 +46,10 @@ export default class DownloadTracker {
   }
 
   private startSettingDate() {
-    const today = new Date();
-    const endDate = new Date(today);
+    const today: any = new Date();
+    const endDate: any = new Date(today);
     endDate.setDate(today.getDate() - 1); // Yesterday
-    const startDate = new Date(endDate);
+    const startDate: any = new Date(endDate);
     startDate.setDate(endDate.getDate() - 6); // Go back one week
 
     return { startDate, endDate };
