@@ -2,6 +2,8 @@ import axios from "axios";
 import { formatDate } from "./util";
 import { WEEK_NUM, PACKAGES, URL } from "./data";
 import { Packages } from "./models/Package";
+import { OutputView } from "./views/OutputView";
+
 class DownloadTracker {
   packages: string[];
   #weekNum: number;
@@ -77,18 +79,8 @@ class DownloadTracker {
 
   async start() {
     await this.#getWeekPacks();
-    this.#weekPacks.forEach((weekPack, i) => {
-      console.log(`\nPackage Name: ${weekPack[i].packName}`);
-      weekPack.forEach(({ downloads }, index) => {
-        console.log(`Week ${index + 1}: ${downloads}`);
-      });
-      console.log("------------------");
-    });
-
+    OutputView.printWeekPackageName(this.#weekPacks);
     console.log("\nWeekly Total Downloads for All Packages:");
-    // weeklyTotalDownloads.forEach((total, index) => {
-    //   console.log(`Week ${index + 1}: ${total}`);
-    // });
   }
 }
 
