@@ -5,10 +5,12 @@ function formatDate(date: Date): string {
   return date.toISOString().split("T")[0];
 }
 
-// Helper function to find the most recent Sunday from a given date
+// Helper function to find the most recent Sunday before or on the given date
 function findMostRecentSunday(date: Date): Date {
+  const currentDayOfWeek = date.getDay();
+  const daysToAdd = currentDayOfWeek === 0 ? 7 : currentDayOfWeek;
   const result = new Date(date);
-  result.setDate(result.getDate() - result.getDay());
+  result.setDate(result.getDate() - daysToAdd + 1);
   return result;
 }
 
@@ -33,21 +35,25 @@ async function getDownloadsForWeek(
   }
 }
 
-// Function to get weekly downloads from Sunday to Sunday for the past 6 weeks for a given npm package
-async function getWeeklyDownloadsSundayToSunday(
+// Function to get weekly downloads from yesterday to yesterday for the past 6 weeks for a given npm package
+async function getWeeklyDownloadsFromYesterday(
   packageName: string
 ): Promise<number[]> {
   const today = new Date();
-  const mostRecentSunday = findMostRecentSunday(today);
+  const endDate = new Date(today);
+  endDate.setDate(today.getDate() - 1); // Yesterday
+  const startDate = new Date(endDate);
+  startDate.setDate(endDate.getDate() - 6); // Go back one week
+
   const weeklyDownloads = [];
 
   for (let i = 0; i < 6; i++) {
-    // Calculate the start and end dates for each week (Sunday to Sunday)
-    const start = new Date(mostRecentSunday);
-    start.setDate(mostRecentSunday.getDate() - i * 7);
+    // Calculate the start and end dates for each week (Yesterday to Yesterday)
+    const start = new Date(startDate);
+    start.setDate(startDate.getDate() - i * 7); // Go back i weeks
 
-    const end = new Date(start);
-    end.setDate(start.getDate() + 6);
+    const end = new Date(endDate);
+    end.setDate(endDate.getDate() - i * 7); // Go back i weeks
 
     const downloads = await getDownloadsForWeek(
       packageName,
@@ -82,7 +88,7 @@ async function getD() {
 
   for (const packageName of packages) {
     console.log(`\nPackage: ${packageName}`);
-    const weeklyDownloads = await getWeeklyDownloadsSundayToSunday(packageName);
+    const weeklyDownloads = await getWeeklyDownloadsFromYesterday(packageName);
     for (let i = 0; i < weeklyDownloads.length; i++) {
       weeklyTotalDownloads[i] += weeklyDownloads[i];
     }
@@ -92,12 +98,6 @@ async function getD() {
   weeklyTotalDownloads.forEach((total, index) => {
     console.log(`Week ${index + 1}: ${total}`);
   });
-
-  const totalDownloads = weeklyTotalDownloads.reduce(
-    (acc, val) => acc + val,
-    0
-  );
-  console.log(`\nTotal Downloads for All Packages: ${totalDownloads}`);
 }
 
 getD();
