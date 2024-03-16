@@ -1,5 +1,6 @@
 import axios from "axios";
-import { formatDate } from "./util/formatDate";
+import { formatDate } from "./util";
+import { WEEK_NUM, PACKAGES, URL } from "./data";
 class DownloadTracker {
   packages: string[];
   weekNum: number;
@@ -10,7 +11,7 @@ class DownloadTracker {
   }
 
   async getDownloadsForWeek(packageName, start, end) {
-    const url = `https://api.npmjs.org/downloads/point/${start}:${end}/${packageName}`;
+    const url = `${URL}${start}:${end}/${packageName}`;
     try {
       const response = await axios.get(url);
       const data = await response.data;
@@ -79,18 +80,5 @@ class DownloadTracker {
   }
 }
 
-const weekNum = 6;
-const packages = [
-  "@sd-jwt/crypto-nodejs",
-  // "@sd-jwt/crypto-browser",
-  // "@sd-jwt/core",
-  // "@sd-jwt/sd-jwt-vc",
-  // "@sd-jwt/utils",
-  // "@sd-jwt/types",
-  // "@sd-jwt/decode",
-  // "@sd-jwt/present",
-  // "@sd-jwt/hash",
-];
-
-const tracker = new DownloadTracker(packages, weekNum);
+const tracker = new DownloadTracker(PACKAGES, WEEK_NUM);
 tracker.getTotalDownloads();
