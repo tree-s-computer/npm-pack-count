@@ -1,8 +1,9 @@
 import axios from "axios";
-
+import { formatDate } from "./util/formatDate";
 class DownloadTracker {
   packages: string[];
   weekNum: number;
+
   constructor(packages, weekNum) {
     this.packages = packages;
     this.weekNum = weekNum;
@@ -36,6 +37,7 @@ class DownloadTracker {
     for (let i = 0; i < this.weekNum; i++) {
       // Calculate the start and end dates for each week (Yesterday to Yesterday)
       const start = new Date(startDate);
+
       start.setDate(startDate.getDate() - i * 7); // Go back i weeks
 
       const end = new Date(endDate);
@@ -43,12 +45,12 @@ class DownloadTracker {
 
       const downloads = await this.getDownloadsForWeek(
         packageName,
-        this.formatDate(start),
-        this.formatDate(end)
+        formatDate(start),
+        formatDate(end)
       );
       weeklyDownloads.push(downloads);
       console.log(
-        `Week ${i + 1} (${this.formatDate(start)} to ${this.formatDate(
+        `Week ${i + 1} (${formatDate(start)} to ${formatDate(
           end
         )}): ${downloads} downloads`
       );
@@ -75,23 +77,19 @@ class DownloadTracker {
       console.log(`Week ${index + 1}: ${total}`);
     });
   }
-
-  formatDate(date) {
-    return date.toISOString().split("T")[0];
-  }
 }
 
 const weekNum = 6;
 const packages = [
   "@sd-jwt/crypto-nodejs",
-  "@sd-jwt/crypto-browser",
-  "@sd-jwt/core",
-  "@sd-jwt/sd-jwt-vc",
-  "@sd-jwt/utils",
-  "@sd-jwt/types",
-  "@sd-jwt/decode",
-  "@sd-jwt/present",
-  "@sd-jwt/hash",
+  // "@sd-jwt/crypto-browser",
+  // "@sd-jwt/core",
+  // "@sd-jwt/sd-jwt-vc",
+  // "@sd-jwt/utils",
+  // "@sd-jwt/types",
+  // "@sd-jwt/decode",
+  // "@sd-jwt/present",
+  // "@sd-jwt/hash",
 ];
 
 const tracker = new DownloadTracker(packages, weekNum);
