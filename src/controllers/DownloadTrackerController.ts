@@ -46,10 +46,10 @@ export default class DownloadTracker {
   }
 
   private startSettingDate() {
-    const today: any = new Date();
-    const endDate: any = new Date(today);
+    const today = new Date();
+    const endDate = new Date(today);
     endDate.setDate(today.getDate() - 1); // Yesterday
-    const startDate: any = new Date(endDate);
+    const startDate = new Date(endDate);
     startDate.setDate(endDate.getDate() - 6); // Go back one week
 
     return { startDate, endDate };
