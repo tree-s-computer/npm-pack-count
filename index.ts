@@ -14,7 +14,11 @@ class DownloadTracker {
     this.weekNum = weekNum;
   }
 
-  private async getDownloadsForWeek(packageName: string, start: any, end: any) {
+  private async getDownloadsForWeek(
+    packageName: string,
+    start: string,
+    end: string
+  ) {
     const url = `${URL}${start}:${end}/${packageName}`;
 
     try {
