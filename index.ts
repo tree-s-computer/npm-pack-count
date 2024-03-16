@@ -1,84 +1,96 @@
 import axios from "axios";
 import { formatDate } from "./util";
 import { WEEK_NUM, PACKAGES, URL } from "./data";
+import { Packages } from "./models/Package";
 class DownloadTracker {
   packages: string[];
-  weekNum: number;
+  #weekNum: number;
+  #weekPacks: Packages[][] = [];
 
   constructor(packages, weekNum) {
     this.packages = packages;
-    this.weekNum = weekNum;
+    this.#weekNum = weekNum;
   }
 
-  async getDownloadsForWeek(packageName, start, end) {
+  async #getDownloadsForWeek(packageName: string, start: any, end: any) {
     const url = `${URL}${start}:${end}/${packageName}`;
+
     try {
-      const response = await axios.get(url);
-      const data = await response.data;
-      if (data && data.downloads) {
-        return data.downloads;
-      } else {
-        return 0;
+      const { data } = await axios.get(url);
+      const { downloads, start, end, package: packName } = data;
+
+      if (data?.downloads) {
+        return new Packages(downloads, start, end, packName);
       }
+
+      return new Packages(0, start, end, "none");
     } catch (error) {
       console.error("Error fetching download stats:", error);
-      return 0;
+      return new Packages(0, start, end, "none");
     }
   }
 
-  async getWeeklyDownloadsFromYesterday(packageName) {
+  #setWeekData(startDate, endDate, i) {
+    // Calculate the start and end dates for each week (Yesterday to Yesterday)
+    const start = new Date(startDate);
+    start.setDate(startDate.getDate() - i * 7); // Go back i weeks
+    const end = new Date(endDate);
+
+    return { start, end };
+  }
+
+  #startSettingDate() {
     const today = new Date();
     const endDate = new Date(today);
     endDate.setDate(today.getDate() - 1); // Yesterday
     const startDate = new Date(endDate);
     startDate.setDate(endDate.getDate() - 6); // Go back one week
 
-    const weeklyDownloads = [];
+    return { startDate, endDate };
+  }
 
-    for (let i = 0; i < this.weekNum; i++) {
-      // Calculate the start and end dates for each week (Yesterday to Yesterday)
-      const start = new Date(startDate);
+  async #getWeeklyDownloadsFromYesterday(packageName: string) {
+    const weekPack: Packages[] = [];
+    const { startDate, endDate } = this.#startSettingDate();
 
-      start.setDate(startDate.getDate() - i * 7); // Go back i weeks
+    for (let i = 0; i < this.#weekNum; i++) {
+      const { start, end } = this.#setWeekData(startDate, endDate, i);
 
-      const end = new Date(endDate);
-      end.setDate(endDate.getDate() - i * 7); // Go back i weeks
-
-      const downloads = await this.getDownloadsForWeek(
+      const pack = await this.#getDownloadsForWeek(
         packageName,
         formatDate(start),
         formatDate(end)
       );
-      weeklyDownloads.push(downloads);
-      console.log(
-        `Week ${i + 1} (${formatDate(start)} to ${formatDate(
-          end
-        )}): ${downloads} downloads`
-      );
+
+      weekPack.push(pack);
     }
 
-    return weeklyDownloads;
+    return weekPack;
   }
 
-  async getTotalDownloads() {
-    const weeklyTotalDownloads = Array(this.weekNum).fill(0);
-
+  async #getWeekPacks() {
     for (const packageName of this.packages) {
-      console.log(`\nPackage: ${packageName}`);
-      const weeklyDownloads = await this.getWeeklyDownloadsFromYesterday(
-        packageName
-      );
-      for (let i = 0; i < weeklyDownloads.length; i++) {
-        weeklyTotalDownloads[i] += weeklyDownloads[i];
-      }
+      const weekPack = await this.#getWeeklyDownloadsFromYesterday(packageName);
+      this.#weekPacks.push(weekPack);
     }
+  }
+
+  async start() {
+    await this.#getWeekPacks();
+    this.#weekPacks.forEach((weekPack, i) => {
+      console.log(`\nPackage Name: ${weekPack[i].packName}`);
+      weekPack.forEach(({ downloads }, index) => {
+        console.log(`Week ${index + 1}: ${downloads}`);
+      });
+      console.log("------------------");
+    });
 
     console.log("\nWeekly Total Downloads for All Packages:");
-    weeklyTotalDownloads.forEach((total, index) => {
-      console.log(`Week ${index + 1}: ${total}`);
-    });
+    // weeklyTotalDownloads.forEach((total, index) => {
+    //   console.log(`Week ${index + 1}: ${total}`);
+    // });
   }
 }
 
 const tracker = new DownloadTracker(PACKAGES, WEEK_NUM);
-tracker.getTotalDownloads();
+tracker.start();
