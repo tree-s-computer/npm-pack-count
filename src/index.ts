@@ -4,7 +4,7 @@ import { WEEK_NUM, PACKAGES, URL } from "./data";
 import { Packages } from "./models/Package";
 import { OutputView } from "./views/OutputView";
 
-class DownloadTracker {
+export default class DownloadTracker {
   packages: string[];
   private weekNum: number;
   private weekPacks: Packages[][] = [];
