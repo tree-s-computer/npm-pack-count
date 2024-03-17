@@ -40,13 +40,17 @@ export default class DownloadTracker {
     // Calculate the start and end dates for each week (Yesterday to Yesterday)
     const start = new Date(startDate);
     start.setDate(startDate.getDate() - i * 7); // Go back i weeks
+
     const end = new Date(endDate);
+    end.setDate(endDate.getDate() - i * 7); // Go back i weeks
 
     return { start, end };
   }
 
   private startSettingDate() {
+    // Default
     const today = new Date();
+
     const endDate = new Date(today);
     endDate.setDate(today.getDate() - 1); // Yesterday
     const startDate = new Date(endDate);
@@ -55,7 +59,7 @@ export default class DownloadTracker {
     return { startDate, endDate };
   }
 
-  private async getWeeklyDownloadsFromYesterday(packageName: string) {
+  private async getWeeklyDownloadsDefault(packageName: string) {
     const weekPack: Packages[] = [];
     const { startDate, endDate } = this.startSettingDate();
 
@@ -76,7 +80,7 @@ export default class DownloadTracker {
 
   private async getWeekPacks() {
     for (const packageName of this.packages) {
-      const weekPack = await this.getWeeklyDownloadsFromYesterday(packageName);
+      const weekPack = await this.getWeeklyDownloadsDefault(packageName);
       this.weekPacks.push(weekPack);
     }
   }
