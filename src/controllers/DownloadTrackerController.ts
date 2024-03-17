@@ -85,9 +85,25 @@ export default class DownloadTracker {
     }
   }
 
+  private getWeekPackTotal() {
+    const totalNums = [];
+    this.weekPacks.forEach((weekPack, i) => {
+      const weekTotalDownloads = weekPack.reduce(
+        (total, e) => total + e.downloads,
+        0
+      );
+      totalNums.push({
+        total: weekTotalDownloads.toLocaleString(),
+        packName: weekPack[i].packName,
+      });
+    });
+
+    return totalNums;
+  }
+
   public async start() {
     await this.getWeekPacks();
     OutputView.printWeekPackageName(this.weekPacks);
-    console.log("\nWeekly Total Downloads for All Packages:");
+    OutputView.printTotalDownloads(this.getWeekPackTotal());
   }
 }

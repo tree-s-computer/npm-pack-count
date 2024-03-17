@@ -1,4 +1,18 @@
 export class OutputView {
+  static printTotalDownloads(weekTotalNums) {
+    console.log("┌───────────────────────────────┬─────────────────┐");
+    console.log("│ Package Name                  │ Total Downloads │");
+    console.log("├───────────────────────────────┼─────────────────┤");
+
+    weekTotalNums.forEach(({ total, packName }) => {
+      console.log(
+        `│ ${packName.padEnd(30)} │ ${total.toLocaleString().padStart(15)} │`
+      );
+    });
+
+    console.log("└───────────────────────────────┴─────────────────┘");
+  }
+
   static printWeekPackageName(weekPacks) {
     console.log(
       "┌───────────────────────────────┬─────────────────────────────────────┬─────────────────────────────────────┐"
