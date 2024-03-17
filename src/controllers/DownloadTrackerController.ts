@@ -29,7 +29,7 @@ export default class DownloadTracker {
         return new Packages(downloads, start, end, packName);
       }
 
-      return new Packages(0, start, end, "none");
+      return new Packages(0, start, end, packName);
     } catch (error) {
       console.error("Error fetching download stats:", error);
       return new Packages(0, start, end, "none");
