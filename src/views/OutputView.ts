@@ -1,11 +1,35 @@
 export class OutputView {
   static printWeekPackageName(weekPacks) {
+    console.log(
+      "┌───────────────────────────────┬─────────────────────────────────────┬─────────────────────────────────────┐"
+    );
+    console.log(
+      "│ Package Name                  │ Week                                │ Downloads                           │"
+    );
+    console.log(
+      "├───────────────────────────────┼─────────────────────────────────────┼─────────────────────────────────────┤"
+    );
+
     weekPacks.forEach((weekPack, i) => {
-      console.log(`\nPackage Name: ${weekPack[i].packName}`);
-      weekPack.forEach(({ downloads }, index) => {
-        console.log(`Week ${index + 1}: ${downloads}`);
+      console.log(
+        `│ ${weekPack[i].packName.padEnd(30)} │`.slice(0, 32) +
+          " ".repeat(15) +
+          "│"
+      );
+      weekPack.forEach(({ downloads, start, end }, index) => {
+        console.log(
+          `│                               │ Week ${
+            index + 1
+          } (${start} - ${end}) │ ${downloads.toLocaleString().padStart(35)} │`
+        );
       });
-      console.log("------------------");
+      console.log(
+        "├───────────────────────────────┼─────────────────────────────────────┼─────────────────────────────────────┤"
+      );
     });
+
+    console.log(
+      "└───────────────────────────────┴─────────────────────────────────────┴─────────────────────────────────────┘"
+    );
   }
 }
