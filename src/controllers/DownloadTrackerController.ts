@@ -17,7 +17,7 @@ export default class DownloadTracker {
   private async getDownloadsForWeek(
     packageName: string,
     start: string,
-    end: string
+    end: string,
   ) {
     const url = `${URL}${start}:${end}/${packageName}`;
 
@@ -69,7 +69,7 @@ export default class DownloadTracker {
       const pack = await this.getDownloadsForWeek(
         packageName,
         formatDate(start),
-        formatDate(end)
+        formatDate(end),
       );
 
       weekPack.push(pack);
@@ -90,7 +90,7 @@ export default class DownloadTracker {
     this.weekPacks.forEach((weekPack, i) => {
       const weekTotalDownloads = weekPack.reduce(
         (total, e) => total + e.downloads,
-        0
+        0,
       );
       totalNums.push({
         total: weekTotalDownloads.toLocaleString(),
