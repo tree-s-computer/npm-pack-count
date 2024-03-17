@@ -1,8 +1,8 @@
-import axios from "axios";
-import { Packages } from "../models/Package";
-import { URL } from "@/data";
-import { formatDate } from "@/util";
-import { OutputView } from "@/views/OutputView";
+import axios from 'axios';
+import { Packages } from '../models/Package';
+import { URL } from '../data';
+import { formatDate } from '../util';
+import { OutputView } from '../views/OutputView';
 
 export default class DownloadTracker {
   packages: string[];
@@ -31,8 +31,8 @@ export default class DownloadTracker {
 
       return new Packages(0, start, end, packName);
     } catch (error) {
-      console.error("Error fetching download stats:", error);
-      return new Packages(0, start, end, "none");
+      console.error('Error fetching download stats:', error);
+      return new Packages(0, start, end, 'none');
     }
   }
 
