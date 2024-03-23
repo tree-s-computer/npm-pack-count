@@ -5,7 +5,7 @@ import { formatDate } from '../util';
 import { OutputView } from '../views/OutputView';
 
 export default class DownloadTracker {
-   packages: string[];
+  packages: string[];
   private weekNum: number;
   private weekPacks: Packages[][] = [];
 
@@ -52,7 +52,7 @@ export default class DownloadTracker {
     const today = new Date();
 
     const endDate = new Date(today);
-    endDate.setDate(today.getDate() - 4); // Yesterday
+    endDate.setDate(today.getDate() - 1); // Yesterday
     const startDate = new Date(endDate);
     startDate.setDate(endDate.getDate() - 6); // Go back one week
 
@@ -102,8 +102,7 @@ export default class DownloadTracker {
   }
 
   public async start() {
- 
     await this.getWeekPacks();
-
+    return this.weekPacks;
   }
 }
