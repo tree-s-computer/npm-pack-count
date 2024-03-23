@@ -13,6 +13,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "contributors": [
+    "Lukas.J.Han <lukas.j.han@gmail.com>"
+  ],
   "homepage": "https://github.com/tree-s-computer/npm-pack-count" ,
   "bugs": {
     "url": "https://github.com/tree-s-computer/npm-pack-count/issues",
