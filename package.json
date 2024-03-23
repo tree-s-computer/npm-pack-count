@@ -1,6 +1,6 @@
 {
   "name" : "@seorim/npm-pack-count",
-  "version" : "@seorim/npm-pack-count",
+  "version" : "1.0.0",
   "scripts": {
     "start": "tsx --watch ./src/index.ts",
     "test": "vitest",
