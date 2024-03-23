@@ -1,6 +1,6 @@
 {
-  "name" : "@yunseorim1116/npm-pack-count",
-  "version" : "0.0.1",
+  "name": "@yunseorim1116/npm-pack-count",
+  "version": "0.0.3",
   "description": "npm-pack-count",
   "author": "seorimYoon",
   "keywords": [
@@ -16,7 +16,7 @@
   "contributors": [
     "Lukas.J.Han <lukas.j.han@gmail.com>"
   ],
-  "homepage": "https://github.com/tree-s-computer/npm-pack-count" ,
+  "homepage": "https://github.com/tree-s-computer/npm-pack-count",
   "bugs": {
     "url": "https://github.com/tree-s-computer/npm-pack-count/issues",
     "email": "hhyjs2r@gmail.com"
