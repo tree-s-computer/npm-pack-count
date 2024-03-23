@@ -5,9 +5,9 @@ import { formatDate } from '../util';
 import { OutputView } from '../views/OutputView';
 
 export default class DownloadTracker {
-  packages: string[];
+  private packages: string[];
   private weekNum: number;
-  private weekPacks: Packages[][] = [];
+  private weekPacks = [];
 
   constructor(packages, weekNum) {
     this.packages = packages;

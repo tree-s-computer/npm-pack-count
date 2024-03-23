@@ -10,20 +10,4 @@ export class Packages {
     this.end = end;
     this.packName = packName;
   }
-
-  // get downloads(): number {
-  //   return this.#downloads;
-  // }
-
-  // get start(): string {
-  //   return this.#start;
-  // }
-
-  // get end(): string {
-  //   return this.#end;
-  // }
-
-  // get packName(): string {
-  //   return this.#packName;
-  // }
 }
