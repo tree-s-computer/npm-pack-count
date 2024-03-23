@@ -1,5 +1,5 @@
 {
-  "name" : "@seorim/npm-pack-count",
+  "name" : "@yunseorim1116/npm-pack-count",
   "version" : "0.0.1",
   "description": "npm-pack-count",
   "author": "seorimYoon",
@@ -10,6 +10,9 @@
     "promise",
     "node"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/tree-s-computer/npm-pack-count" ,
   "bugs": {
     "url": "https://github.com/tree-s-computer/npm-pack-count/issues",
