@@ -1,6 +1,21 @@
 {
   "name" : "@seorim/npm-pack-count",
-  "version" : "1.0.0",
+  "version" : "0.0.1",
+  "description": "npm-pack-count",
+  "author": "seorimYoon",
+  "keywords": [
+    "npm",
+    "package",
+    "count",
+    "promise",
+    "node"
+  ],
+  "homepage": "https://github.com/tree-s-computer/npm-pack-count" ,
+  "bugs": {
+    "url": "https://github.com/tree-s-computer/npm-pack-count/issues",
+    "email": "hhyjs2r@gmail.com"
+  },
+  "main": "dist/index.js",
   "scripts": {
     "start": "tsx --watch ./src/index.ts",
     "test": "vitest",
