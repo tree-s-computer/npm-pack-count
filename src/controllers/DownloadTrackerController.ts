@@ -94,8 +94,6 @@ export default class DownloadTracker {
     const totalNums = [];
 
     weekPacks.forEach((weekPack, i) => {
-      console.log(weekPack);
-      console.log('>>>>>>>>.');
       const packName = weekPack[0].packName;
 
       const weekTotalDownloads = weekPack.reduce(
