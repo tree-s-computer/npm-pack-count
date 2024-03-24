@@ -107,7 +107,8 @@ export default class DownloadTracker {
   }
 
   public async start() {
-    return await this.getWeekPacks();
-    // return this.weekPacks;
+    const results = await this.getWeekPacks();
+    OutputView.printWeekPackageName(results);
+    return results;
   }
 }
