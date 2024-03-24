@@ -90,9 +90,9 @@ export default class DownloadTracker {
     }
   }
 
-  private getWeekPackTotal() {
+  private getWeekPackTotal(weekPacks) {
     const totalNums = [];
-    this.weekPacks.forEach((weekPack, i) => {
+    weekPacks.forEach((weekPack, i) => {
       const weekTotalDownloads = weekPack.reduce(
         (total, e) => total + e.downloads,
         0,
@@ -108,6 +108,9 @@ export default class DownloadTracker {
 
   public async start() {
     const results = await this.getWeekPacks();
+    const totals = this.getWeekPackTotal(results);
+
+    OutputView.printTotalDownloads(totals);
     OutputView.printWeekPackageName(results);
     return results;
   }
