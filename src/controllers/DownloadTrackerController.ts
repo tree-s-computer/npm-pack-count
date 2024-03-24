@@ -39,10 +39,10 @@ export default class DownloadTracker {
   private setWeekData(startDate, endDate, i) {
     // Calculate the start and end dates for each week (Yesterday to Yesterday)
     const start = new Date(startDate);
-    start.setDate(startDate.getDate() - i * 7); // Go back i weeks
+    start.setDate(startDate.getDate() - (this.weekNum - i - 1) * 7); // Go back i weeks in reverse order
 
     const end = new Date(endDate);
-    end.setDate(endDate.getDate() - i * 7); // Go back i weeks
+    end.setDate(endDate.getDate() - (this.weekNum - i - 1) * 7); // Go back i weeks in reverse order
 
     return { start, end };
   }
@@ -90,16 +90,22 @@ export default class DownloadTracker {
     }
   }
 
-  private getWeekPackTotal(weekPacks) {
+  private getWeekPackTotal(weekPacks: any[]) {
     const totalNums = [];
+
     weekPacks.forEach((weekPack, i) => {
+      console.log(weekPack);
+      console.log('>>>>>>>>.');
+      const packName = weekPack[0].packName;
+
       const weekTotalDownloads = weekPack.reduce(
         (total, e) => total + e.downloads,
         0,
       );
+
       totalNums.push({
         total: weekTotalDownloads.toLocaleString(),
-        packName: weekPack[i].packName,
+        packName: packName,
       });
     });
 
@@ -109,7 +115,7 @@ export default class DownloadTracker {
   public async start() {
     const results = await this.getWeekPacks();
     const totals = this.getWeekPackTotal(results);
-
+    console.log(totals);
     OutputView.printTotalDownloads(totals);
     OutputView.printWeekPackageName(results);
     return results;
