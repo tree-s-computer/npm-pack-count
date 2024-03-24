@@ -14,7 +14,7 @@ async function measurePerformance(callback) {
 
 (async () => {
   await measurePerformance(async () => {
-    const tracker = new DownloadTracker(PACKAGES, 1);
+    const tracker = new DownloadTracker(PACKAGES, 10);
     const datas = await tracker.start();
     console.log(datas);
   });
