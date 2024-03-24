@@ -60,28 +60,33 @@ export default class DownloadTracker {
   }
 
   private async getWeeklyDownloadsDefault(packageName: string) {
-    const weekPack: Packages[] = [];
     const { startDate, endDate } = this.startSettingDate();
 
-    for (let i = 0; i < this.weekNum; i++) {
-      const { start, end } = this.setWeekData(startDate, endDate, i);
+    const promises = Array.from({ length: this.weekNum }).map((_, index) => {
+      const { start, end } = this.setWeekData(startDate, endDate, index);
 
-      const pack = await this.getDownloadsForWeek(
+      return this.getDownloadsForWeek(
         packageName,
         formatDate(start),
         formatDate(end),
       );
+    });
 
-      weekPack.push(pack);
+    try {
+      return await Promise.all(promises);
+    } catch (error) {
+      console.error(error);
     }
-
-    return weekPack;
   }
 
   private async getWeekPacks() {
-    for (const packageName of this.packages) {
-      const weekPack = await this.getWeeklyDownloadsDefault(packageName);
-      this.weekPacks.push(weekPack);
+    const promises = this.packages.map((packageName) => {
+      return this.getWeeklyDownloadsDefault(packageName);
+    });
+    try {
+      return await Promise.all(promises);
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -102,7 +107,7 @@ export default class DownloadTracker {
   }
 
   public async start() {
-    await this.getWeekPacks();
-    return this.weekPacks;
+    return await this.getWeekPacks();
+    // return this.weekPacks;
   }
 }
