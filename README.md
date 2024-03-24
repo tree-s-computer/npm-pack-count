@@ -18,3 +18,12 @@ const packages = ['a', 'b']
 4. set the default option (one week from yesterday excluding the current date),
    You can also optionally input the desired weekly unit (ex: Monday-Sunday).
 5. Shows the total number of downloads for all packages.
+
+# Example for Use
+```javascript
+(async () => {
+  const tracker = new DownloadTracker(PACKAGES, 12);
+  //The first argument is an array of package names, the second argument is the desired number of weeks
+  const datas = await tracker.start();
+  console.log(datas);
+})();
