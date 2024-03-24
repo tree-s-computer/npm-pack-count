@@ -80,14 +80,13 @@ export default class DownloadTracker {
   }
 
   private async getWeekPacks() {
-    const promises = this.packages.map((packageName) => {
-      return this.getWeeklyDownloadsDefault(packageName);
-    });
-    try {
-      return await Promise.all(promises);
-    } catch (error) {
-      console.error(error);
+    const results = {};
+    for (const packageName of this.packages) {
+      const weekPack = await this.getWeeklyDownloadsDefault(packageName);
+      results[packageName] = weekPack;
     }
+
+    return results;
   }
 
   private getWeekPackTotal(weekPacks: any[]) {
@@ -112,10 +111,11 @@ export default class DownloadTracker {
 
   public async start() {
     const results = await this.getWeekPacks();
-    const totals = this.getWeekPackTotal(results);
-    console.log(totals);
-    OutputView.printTotalDownloads(totals);
-    OutputView.printWeekPackageName(results);
+    console.log(results);
+    // const totals = this.getWeekPackTotal(results);
+    // console.log(results);
+    // OutputView.printTotalDownloads(totals);
+    // OutputView.printWeekPackageName(results);
     return results;
   }
 }
