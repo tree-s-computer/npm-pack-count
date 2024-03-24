@@ -1,20 +1,20 @@
 # npm-pack-count
 
 `https://api.npmjs.org/downloads/point/${start}:${end}/${packageName}`
-해당 url 을 사용하면 npm 패키지 다운로드수를 구할 수 있다.
+You can use that URL to get the number of npm package downloads.
 
 const packages = ['a', 'b']
 
 # Goal
 
-## 기본기능
+## Basic functionality
 
-1. 하나의 패키지 말고 여러개의 패키지 다운로드 수를 구할 수 있게 한다. (ex: 패키지 a, b)
-2. 패키지별 주간, 월간 패키지 토탈 다운로드수를 보여준다. (ex: a의 주간 패키지 다운로드수, b의 주간 패키지 다운로드 수)
+1. make it possible to get the number of downloads for multiple packages instead of just one package (ex: packages a, b)
+2. show total weekly and monthly package downloads by package. (ex: weekly package downloads of A, weekly package downloads of B)
 
-## option 기능
+## option function
 
-3. a 와 b 패키지의 주간, 월간 총합 다운로드 수를 합산하여 보여준다.
-4. 기본 option 을 설정하고(현재 날짜 제외한 어제부터 일주일 단위),
-   원하는 주간 단위 또한 (ex: 월요일-일요일) 선택적으로 입력받게 할 수 있다.
-5. 모든 패키지의 토탈 다운로드수를 보여준다.
+3. shows the total weekly and monthly downloads of packages a and b combined.
+4. set the default option (one week from yesterday excluding the current date),
+   You can also optionally input the desired weekly unit (ex: Monday-Sunday).
+5. Shows the total number of downloads for all packages.
