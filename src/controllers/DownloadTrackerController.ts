@@ -7,7 +7,6 @@ import { OutputView } from '../views/OutputView';
 export default class DownloadTracker {
   private packages: string[];
   private weekNum: number;
-  private weekPacks = [];
 
   constructor(packages, weekNum) {
     this.packages = packages;
@@ -89,33 +88,34 @@ export default class DownloadTracker {
     return results;
   }
 
-  private getWeekPackTotal(weekPacks: any[]) {
-    const totalNums = [];
+  private getWeekPackTotal(weekPacks) {
+    const totalNums = {};
 
-    weekPacks.forEach((weekPack, i) => {
-      const packName = weekPack[0].packName;
+    this.packages.forEach((packName) => {
+      const start = weekPacks[packName][0].start;
+      const end = weekPacks[packName][this.weekNum - 1].start;
 
-      const weekTotalDownloads = weekPack.reduce(
-        (total, e) => total + e.downloads,
-        0,
-      );
-
-      totalNums.push({
-        total: weekTotalDownloads.toLocaleString(),
-        packName: packName,
-      });
+      const downloads = weekPacks[packName]
+        .reduce((total, e) => total + e.downloads, 0)
+        .toLocaleString();
+      totalNums[packName] = { downloads, start, end };
     });
 
     return totalNums;
   }
 
   public async start() {
+    const allDatas = {};
     const results = await this.getWeekPacks();
-    console.log(results);
-    // const totals = this.getWeekPackTotal(results);
-    // console.log(results);
+    const totals = this.getWeekPackTotal(results);
+
+    allDatas['allTotalDownloads'] = totals;
+    allDatas['weekResult'] = results;
+
+    console.log(allDatas);
+
     // OutputView.printTotalDownloads(totals);
     // OutputView.printWeekPackageName(results);
-    return results;
+    return allDatas;
   }
 }
