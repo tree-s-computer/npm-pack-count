@@ -112,8 +112,6 @@ export default class DownloadTracker {
     allDatas['allTotalDownloads'] = totals;
     allDatas['weekResult'] = results;
 
-    console.log(allDatas);
-
     // OutputView.printTotalDownloads(totals);
     // OutputView.printWeekPackageName(results);
     return allDatas;
