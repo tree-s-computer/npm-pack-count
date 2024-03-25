@@ -20,8 +20,6 @@ yarn add @yunseorim1116/npm-pack-count
 pnpm i @yunseorim1116/npm-pack-count
 ```
 
-const packages = ['a', 'b']
-
 # Goal
 
 ## Basic functionality
