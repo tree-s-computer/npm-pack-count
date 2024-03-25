@@ -1,9 +1,24 @@
 # npm-pack-count
 
-`https://api.npmjs.org/downloads/point/${start}:${end}/${packageName}`
-You can use that URL to get the number of npm package downloads.
+## How it works?
 
-const packages = ['a', 'b']
+We use this URL to get the number of npm package downloads.
+
+`https://api.npmjs.org/downloads/point/${start}:${end}/${packageName}`
+
+## Installation
+
+```bash
+npm i @yunseorim1116/npm-pack-count
+```
+
+```bash
+yarn add @yunseorim1116/npm-pack-count
+```
+
+```bash
+pnpm i @yunseorim1116/npm-pack-count
+```
 
 # Goal
 
@@ -19,11 +34,16 @@ const packages = ['a', 'b']
    You can also optionally input the desired weekly unit (ex: Monday-Sunday).
 5. Shows the total number of downloads for all packages.
 
-# Example for Use
+# How to Use
+
 ```javascript
 (async () => {
-  const tracker = new DownloadTracker(PACKAGES, 12);
-  //The first argument is an array of package names, the second argument is the desired number of weeks
+  const packages = ['axios', '@types/axios'];
+  const numberOfWeeks = 6;
+
+  // The first argument is an array of package names, the second argument is the desired number of weeks
+  const tracker = new DownloadTracker(packages, numberOfWeeks);
   const datas = await tracker.start();
   console.log(datas);
 })();
+```
