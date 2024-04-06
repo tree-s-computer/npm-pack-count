@@ -1,0 +1,32 @@
+{
+    "name": "cores",
+    "version": "1.0.0",
+    "description": "core",
+    "author": "tree <hhyjs2r@gmail.com>",
+    "homepage": "https://github.com/tree-s-computer/npm-pack-count/tree/main/packages/types#readme",
+    "license": "ISC",
+    "main": "src/index.js",
+    "directories": {
+      "src": "src",
+      "test": "__tests__"
+    },
+    "files": [
+      "lib"
+    ],
+    "publishConfig": {
+        "access": "public"
+      },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/tree-s-computer/npm-pack-count.git"
+    },
+    "scripts": {  
+      "start":"tsx --watch ./src/index.ts",
+     "build": "rm -rf **/dist",
+      "test": "node ./__tests__/core.test.js"
+    },
+    "bugs": {
+      "url": "https://github.com/tree-s-computer/npm-pack-count/issues"
+    }
+  }
+  

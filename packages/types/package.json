@@ -1,0 +1,30 @@
+{
+  "name": "types",
+  "version": "1.0.0",
+  "description": "types",
+  "author": "tree <hhyjs2r@gmail.com>",
+  "homepage": "https://github.com/tree-s-computer/npm-pack-count/tree/main/packages/types#readme",
+  "license": "ISC",
+  "main": "src/types.js",
+  "directories": {
+    "src": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tree-s-computer/npm-pack-count.git"
+  },
+  "scripts": {
+    "start":"tsx --watch ./src/index.ts",
+    "test": "node ./__tests__/types.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/tree-s-computer/npm-pack-count/issues"
+  }
+}

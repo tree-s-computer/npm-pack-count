@@ -1,0 +1,26 @@
+{
+  "name": "test-repo",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "tree <hhyjs2r@gmail.com>",
+  "homepage": "https://github.com/tree-s-computer/npm-pack-count/tree/main/packages/test-repo#readme",
+  "license": "ISC",
+  "main": "lib/test-repo.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tree-s-computer/npm-pack-count.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/test-repo.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/tree-s-computer/npm-pack-count/issues"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "count-view",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "tree <hhyjs2r@gmail.com>",
+  "homepage": "https://github.com/tree-s-computer/npm-pack-count/tree/main/packages/count-view#readme",
+  "license": "ISC",
+  "main": "src/count-view.js",
+  "directories": {
+    "src": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tree-s-computer/npm-pack-count.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/count-view.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/tree-s-computer/npm-pack-count/issues"
+  }
+}
