@@ -2,7 +2,6 @@ import axios from 'axios';
 import { Packages } from '../models/Package';
 import { URL } from '../data';
 import { formatDate } from '../util';
-import { OutputView } from '../views/OutputView';
 
 export default class DownloadTracker {
   private packages: string[];
