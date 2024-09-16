@@ -1,6 +1,7 @@
 {
   "name": "@yunseorim1116/npm-pack-count",
   "version": "0.1.9",
+  "license": "MIT",
   "description": "npm-pack-count",
   "author": "seorimYoon",
   "keywords": [
