@@ -8,16 +8,15 @@
     "pack-count": "ts-node index.ts"
   },
   "devDependencies": {
-    "typescript": "^5.4.2",
-    "tsx": "^4.7.1",
     "prettier": "3.2.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2",
     "vitest": "^1.4.0"
-  },
-  "dependencies": {
-    "@yunseorim1116/core": "workspace:*",
-    "@yunseorim1116/cli": "workspace:*"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "@yunseorim1116/npm-pack-cli": "workspace:^"
+  }
 }
