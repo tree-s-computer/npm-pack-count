@@ -110,9 +110,6 @@ export default class DownloadTracker {
 
     allDatas['allTotalDownloads'] = totals;
     allDatas['weekResult'] = results;
-
-    // OutputView.printTotalDownloads(totals);
-    // OutputView.printWeekPackageName(results);
     return allDatas;
   }
 }

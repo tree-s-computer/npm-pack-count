@@ -1,37 +1,19 @@
 0 silly argv {
-0 silly argv   _: [ 'run' ],
+0 silly argv   _: [ 'create' ],
 0 silly argv   lernaVersion: '8.1.8',
-0 silly argv   '$0': 'node_modules/lerna/dist/cli.js',
-0 silly argv   script: 'dev'
+0 silly argv   '$0': '../../../.pnpm/store/global/5/node_modules/lerna/dist/cli.js',
+0 silly argv   name: 'test'
 0 silly argv }
 1 notice cli v8.1.8
 2 verbose packageConfigs Package manager "pnpm" detected. Resolving packages using `pnpm-workspace.yaml`.
 3 verbose rootPath /Users/tree/Documents/npm-pack-count/npm-pack-count
-4 error Failed to process project graph. Run "nx reset" to fix this. Please report the issue if you keep seeing it.
-4 error       The "nx/js/dependencies-and-lockfile" plugin threw an error while creating dependencies: PropertyNameExpected in /Users/tree/Documents/npm-pack-count/npm-pack-count/tsconfig.json at 33:85
-4 error   [0m [90m 31 | [39m    // "moduleResolution": "node10",                     /* Specify how TypeScript looks up a file from a given module specifier. */[0m
-4 error   [0m [90m 32 | [39m    "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,[0m
-4 error   [0m[31m[1m>[22m[39m[90m 33 | [39m  /* Specify a set of entries that re-map imports to additional lookup locations. */,[0m
-4 error   [0m [90m    | [39m                                                                                    [31m[1m^[22m[39m[0m
-4 error   [0m [90m 34 | [39m    // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */[0m
-4 error   [0m [90m 35 | [39m    // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */[0m
-4 error   [0m [90m 36 | [39m    // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */[0m
-4 error
-4 error     Error: PropertyNameExpected in /Users/tree/Documents/npm-pack-count/npm-pack-count/tsconfig.json at 33:85
-4 error     [0m [90m 31 | [39m    // "moduleResolution": "node10",                     /* Specify how TypeScript looks up a file from a given module specifier. */[0m
-4 error     [0m [90m 32 | [39m    "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,[0m
-4 error     [0m[31m[1m>[22m[39m[90m 33 | [39m  /* Specify a set of entries that re-map imports to additional lookup locations. */,[0m
-4 error     [0m [90m    | [39m                                                                                    [31m[1m^[22m[39m[0m
-4 error     [0m [90m 34 | [39m    // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */[0m
-4 error     [0m [90m 35 | [39m    // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */[0m
-4 error     [0m [90m 36 | [39m    // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */[0m
-4 error
-4 error         at parseJson (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/utils/json.js:29:15)
-4 error         at readJsonFile (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/utils/fileutils.js:30:37)
-4 error         at TargetProjectLocator.getRootTsConfig (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/plugins/js/project-graph/build-dependencies/target-project-locator.js:245:50)
-4 error         at new TargetProjectLocator (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/plugins/js/project-graph/build-dependencies/target-project-locator.js:39:30)
-4 error         at buildExplicitDependencies (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/plugins/js/project-graph/build-dependencies/build-dependencies.js:22:34)
-4 error         at Object.createDependencies (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/plugins/js/index.js:81:92)
-4 error         at LoadedNxPlugin.createDependencies (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/project-graph/plugins/internal-api.js:60:59)
-4 error         at createDependencies (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/project-graph/plugins/isolation/plugin-worker.js:88:49)
-4 error         at consumeMessage (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/project-graph/plugins/isolation/messaging.js:38:32)
+4 error Error: canceled
+4 error     at Interface.<anonymous> (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/read@3.0.1/node_modules/read/dist/commonjs/read.js:89:21)
+4 error     at Interface.emit (node:events:519:28)
+4 error     at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1125:18)
+4 error     at ReadStream.onkeypress (node:internal/readline/interface:264:20)
+4 error     at ReadStream.emit (node:events:519:28)
+4 error     at emitKeys (node:internal/readline/utils:371:14)
+4 error     at emitKeys.next (<anonymous>)
+4 error     at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+4 error     at ReadStream.emit (node:events:519:28)
