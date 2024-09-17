@@ -24,9 +24,8 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "start": "tsx --watch ./src/index.ts",
+    "build": "lerna run build --stream",
     "test": "vitest",
-    "build": "tsc",
     "format": "prettier --write .",
     "perf": "tsx ./perf/index.ts"
   },

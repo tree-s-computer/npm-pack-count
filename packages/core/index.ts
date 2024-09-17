@@ -1,4 +1,4 @@
-import DownloadTracker from '@packages/core/controllers/DownloadTrackerController';
+import DownloadTracker from './controllers/DownloadTrackerController';
 
 const packages = ['@sd-jwt/core'];
 
