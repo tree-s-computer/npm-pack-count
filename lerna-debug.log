@@ -1,38 +1,83 @@
 0 silly argv {
-0 silly argv   _: [ 'run' ],
-0 silly argv   stream: true,
+0 silly argv   _: [ 'version' ],
+0 silly argv   private: false,
 0 silly argv   lernaVersion: '8.1.8',
-0 silly argv   '$0': 'node_modules/lerna/dist/cli.js',
-0 silly argv   script: 'build'
+0 silly argv   '$0': '../../../.pnpm/store/global/5/node_modules/lerna/dist/cli.js'
 0 silly argv }
 1 notice cli v8.1.8
 2 verbose packageConfigs Package manager "pnpm" detected. Resolving packages using `pnpm-workspace.yaml`.
 3 verbose rootPath /Users/tree/Documents/npm-pack-count/npm-pack-count
-4 error Failed to process project graph. Run "nx reset" to fix this. Please report the issue if you keep seeing it.
-4 error       The "nx/js/dependencies-and-lockfile" plugin threw an error while creating dependencies: PropertyNameExpected in /Users/tree/Documents/npm-pack-count/npm-pack-count/tsconfig.json at 33:85
-4 error   [0m [90m 31 | [39m    // "moduleResolution": "node10",                     /* Specify how TypeScript looks up a file from a given module specifier. */[0m
-4 error   [0m [90m 32 | [39m    "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,[0m
-4 error   [0m[31m[1m>[22m[39m[90m 33 | [39m  /* Specify a set of entries that re-map imports to additional lookup locations. */,[0m
-4 error   [0m [90m    | [39m                                                                                    [31m[1m^[22m[39m[0m
-4 error   [0m [90m 34 | [39m    // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */[0m
-4 error   [0m [90m 35 | [39m    // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */[0m
-4 error   [0m [90m 36 | [39m    // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */[0m
-4 error
-4 error     Error: PropertyNameExpected in /Users/tree/Documents/npm-pack-count/npm-pack-count/tsconfig.json at 33:85
-4 error     [0m [90m 31 | [39m    // "moduleResolution": "node10",                     /* Specify how TypeScript looks up a file from a given module specifier. */[0m
-4 error     [0m [90m 32 | [39m    "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,[0m
-4 error     [0m[31m[1m>[22m[39m[90m 33 | [39m  /* Specify a set of entries that re-map imports to additional lookup locations. */,[0m
-4 error     [0m [90m    | [39m                                                                                    [31m[1m^[22m[39m[0m
-4 error     [0m [90m 34 | [39m    // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */[0m
-4 error     [0m [90m 35 | [39m    // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */[0m
-4 error     [0m [90m 36 | [39m    // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */[0m
-4 error
-4 error         at parseJson (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/utils/json.js:29:15)
-4 error         at readJsonFile (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/utils/fileutils.js:30:37)
-4 error         at TargetProjectLocator.getRootTsConfig (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/plugins/js/project-graph/build-dependencies/target-project-locator.js:245:50)
-4 error         at new TargetProjectLocator (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/plugins/js/project-graph/build-dependencies/target-project-locator.js:39:30)
-4 error         at buildExplicitDependencies (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/plugins/js/project-graph/build-dependencies/build-dependencies.js:22:34)
-4 error         at Object.createDependencies (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/plugins/js/index.js:81:92)
-4 error         at LoadedNxPlugin.createDependencies (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/project-graph/plugins/internal-api.js:60:59)
-4 error         at createDependencies (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/project-graph/plugins/isolation/plugin-worker.js:88:49)
-4 error         at consumeMessage (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/nx@19.7.3/node_modules/nx/src/project-graph/plugins/isolation/messaging.js:38:32)
+4 info current version 0.0.0
+5 silly isAnythingCommitted
+6 verbose isAnythingCommitted 1
+7 silly getCurrentBranch
+8 verbose currentBranch test/repo
+9 silly remoteBranchExists
+10 silly isBehindUpstream
+11 silly isBehindUpstream test/repo is behind origin/test/repo by 0 commit(s) and ahead by 0
+12 silly hasTags
+13 verbose hasTags true
+14 silly git-describe.sync "0.1.9-16-gaa740a0" => {"lastTagName":"0.1.9","lastVersion":"0.1.9","refCount":"16","sha":"aa740a0","isDirty":false}
+15 info Looking for changed packages since 0.1.9
+16 silly checking diff packages/cli
+17 silly found diff in packages/cli/README.md
+17 silly found diff in packages/cli/__tests__/cli.test.js
+17 silly found diff in packages/cli/package.json
+17 silly found diff in packages/cli/src/cli.ts
+17 silly found diff in packages/cli/src/index.ts
+18 verbose filtered diff [
+18 verbose filtered diff   'packages/cli/README.md',
+18 verbose filtered diff   'packages/cli/__tests__/cli.test.js',
+18 verbose filtered diff   'packages/cli/package.json',
+18 verbose filtered diff   'packages/cli/src/cli.ts',
+18 verbose filtered diff   'packages/cli/src/index.ts'
+18 verbose filtered diff ]
+19 silly checking diff packages/core
+20 silly found diff in packages/core/README.md
+20 silly found diff in packages/core/index.ts
+20 silly found diff in packages/core/package.json
+20 silly found diff in packages/core/src/__tests__/core.test.js
+20 silly found diff in packages/core/src/controllers/DownloadTrackerController.ts
+20 silly found diff in packages/core/src/data/Package.ts
+20 silly found diff in packages/core/src/models/index.ts
+20 silly found diff in packages/core/src/type/PackageType.ts
+20 silly found diff in packages/core/src/util/index.ts
+21 verbose filtered diff [
+21 verbose filtered diff   'packages/core/README.md',
+21 verbose filtered diff   'packages/core/index.ts',
+21 verbose filtered diff   'packages/core/package.json',
+21 verbose filtered diff   'packages/core/src/__tests__/core.test.js',
+21 verbose filtered diff   'packages/core/src/controllers/DownloadTrackerController.ts',
+21 verbose filtered diff   'packages/core/src/data/Package.ts',
+21 verbose filtered diff   'packages/core/src/models/index.ts',
+21 verbose filtered diff   'packages/core/src/type/PackageType.ts',
+21 verbose filtered diff   'packages/core/src/util/index.ts'
+21 verbose filtered diff ]
+22 verbose updated @yunseorim1116/npm-pack-cli
+23 verbose updated @yunseorim1116/npm-count-core
+24 verbose git-describe undefined => "0.1.9-16-gaa740a0"
+25 silly git-describe parsed => {"lastTagName":"0.1.9","lastVersion":"0.1.9","refCount":"16","sha":"aa740a0","isDirty":false}
+26 info execute Skipping releases
+27 silly lifecycle No script for "preversion" in "@yunseorim1116/npm-pack-count", continuing
+28 silly lifecycle No script for "preversion" in "@yunseorim1116/npm-pack-cli", continuing
+29 silly lifecycle No script for "preversion" in "@yunseorim1116/npm-count-core", continuing
+30 verbose version @yunseorim1116/npm-pack-cli has no lockfile. Skipping lockfile update.
+31 verbose version @yunseorim1116/npm-count-core has no lockfile. Skipping lockfile update.
+32 silly lifecycle No script for "version" in "@yunseorim1116/npm-pack-cli", continuing
+33 silly lifecycle No script for "version" in "@yunseorim1116/npm-count-core", continuing
+34 silly lifecycle No script for "version" in "@yunseorim1116/npm-pack-count", continuing
+35 verbose version Updating root pnpm-lock.yaml
+36 error Error: Command failed with exit code 1: pnpm install --lockfile-only --ignore-scripts
+36 error Scope: all 3 workspace projects
+36 error  WARN  `node_modules` is present. Lockfile only installation will make it out-of-date
+36 error /Users/tree/Documents/npm-pack-count/npm-pack-count/packages/cli:
+36 error  ERR_PNPM_WORKSPACE_PKG_NOT_FOUND  In packages/cli: "@yunseorim1116/npm-count-cli@workspace:*" is in the dependencies but no package named "@yunseorim1116/npm-count-cli" is present in the workspace
+36 error
+36 error This error happened while installing a direct dependency of /Users/tree/Documents/npm-pack-count/npm-pack-count/packages/cli
+36 error
+36 error Packages found in the workspace: @yunseorim1116/npm-pack-count, @yunseorim1116/npm-pack-cli, @yunseorim1116/npm-count-core
+36 error     at makeError (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/execa@5.0.0/node_modules/execa/lib/error.js:59:11)
+36 error     at handlePromise (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/execa@5.0.0/node_modules/execa/index.js:114:26)
+36 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+36 error     at async VersionCommand.updatePackageVersions (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/lerna@8.1.8/node_modules/lerna/dist/index.js:9857:11)
+36 error     at async Promise.all (index 0)

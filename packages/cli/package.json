@@ -1,6 +1,6 @@
 {
   "name": "@yunseorim1116/npm-pack-cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "npm-pack-cli",
   "author": "tree <hhyjs2r@gmail.com>",
   "homepage": "https://github.com/tree-s-computer/npm-pack-count/tree/main/packages/cli#readme",
@@ -9,9 +9,6 @@
   "directories": {
     "lib": "lib",
     "test": "__tests__"
-  },
-  "dependencies": {
-    "@yunseorim1116/npm-count-cli": "workspace:*"
   },
   "files": [
     "lib"
