@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { Packages } from '../models/Package';
-import { URL } from '../data';
+import { Packages } from '../models';
+import { URL } from '../data/Package';
 import { formatDate } from '../util';
-import { OutputView } from '../views/OutputView';
 
 export default class DownloadTracker {
   private packages: string[];
@@ -111,9 +110,6 @@ export default class DownloadTracker {
 
     allDatas['allTotalDownloads'] = totals;
     allDatas['weekResult'] = results;
-
-    // OutputView.printTotalDownloads(totals);
-    // OutputView.printWeekPackageName(results);
     return allDatas;
   }
 }
