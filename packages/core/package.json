@@ -1,6 +1,6 @@
 {
   "name": "@yunseorim1116/npm-count-core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Core functions for npm-pack-count",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
