@@ -7,7 +7,7 @@
 1 notice cli v8.1.8
 2 verbose packageConfigs Package manager "pnpm" detected. Resolving packages using `pnpm-workspace.yaml`.
 3 verbose rootPath /Users/tree/Documents/npm-pack-count/npm-pack-count
-4 info current version 0.0.0
+4 info current version 0.0.1
 5 silly isAnythingCommitted
 6 verbose isAnythingCommitted 1
 7 silly getCurrentBranch
@@ -17,7 +17,7 @@
 11 silly isBehindUpstream test/repo is behind origin/test/repo by 0 commit(s) and ahead by 0
 12 silly hasTags
 13 verbose hasTags true
-14 silly git-describe.sync "0.1.9-16-gaa740a0" => {"lastTagName":"0.1.9","lastVersion":"0.1.9","refCount":"16","sha":"aa740a0","isDirty":false}
+14 silly git-describe.sync "0.1.9-17-g1d62006" => {"lastTagName":"0.1.9","lastVersion":"0.1.9","refCount":"17","sha":"1d62006","isDirty":false}
 15 info Looking for changed packages since 0.1.9
 16 silly checking diff packages/cli
 17 silly found diff in packages/cli/README.md
@@ -55,25 +55,25 @@
 21 verbose filtered diff ]
 22 verbose updated @yunseorim1116/npm-pack-cli
 23 verbose updated @yunseorim1116/npm-count-core
-24 verbose git-describe undefined => "0.1.9-16-gaa740a0"
-25 silly git-describe parsed => {"lastTagName":"0.1.9","lastVersion":"0.1.9","refCount":"16","sha":"aa740a0","isDirty":false}
+24 verbose git-describe undefined => "0.1.9-17-g1d62006"
+25 silly git-describe parsed => {"lastTagName":"0.1.9","lastVersion":"0.1.9","refCount":"17","sha":"1d62006","isDirty":false}
 26 info execute Skipping releases
 27 silly lifecycle No script for "preversion" in "@yunseorim1116/npm-pack-count", continuing
 28 silly lifecycle No script for "preversion" in "@yunseorim1116/npm-pack-cli", continuing
-29 silly lifecycle No script for "preversion" in "@yunseorim1116/npm-count-core", continuing
-30 verbose version @yunseorim1116/npm-pack-cli has no lockfile. Skipping lockfile update.
-31 verbose version @yunseorim1116/npm-count-core has no lockfile. Skipping lockfile update.
-32 silly lifecycle No script for "version" in "@yunseorim1116/npm-pack-cli", continuing
+29 verbose version @yunseorim1116/npm-pack-cli has no lockfile. Skipping lockfile update.
+30 silly lifecycle No script for "version" in "@yunseorim1116/npm-pack-cli", continuing
+31 silly lifecycle No script for "preversion" in "@yunseorim1116/npm-count-core", continuing
+32 verbose version @yunseorim1116/npm-count-core has no lockfile. Skipping lockfile update.
 33 silly lifecycle No script for "version" in "@yunseorim1116/npm-count-core", continuing
 34 silly lifecycle No script for "version" in "@yunseorim1116/npm-pack-count", continuing
 35 verbose version Updating root pnpm-lock.yaml
 36 error Error: Command failed with exit code 1: pnpm install --lockfile-only --ignore-scripts
 36 error Scope: all 3 workspace projects
 36 error  WARN  `node_modules` is present. Lockfile only installation will make it out-of-date
-36 error /Users/tree/Documents/npm-pack-count/npm-pack-count/packages/cli:
-36 error  ERR_PNPM_WORKSPACE_PKG_NOT_FOUND  In packages/cli: "@yunseorim1116/npm-count-cli@workspace:*" is in the dependencies but no package named "@yunseorim1116/npm-count-cli" is present in the workspace
+36 error /Users/tree/Documents/npm-pack-count/npm-pack-count/packages/core:
+36 error  ERR_PNPM_WORKSPACE_PKG_NOT_FOUND  In packages/core: "@yunseorim1116/npm-pack-core@workspace:*" is in the dependencies but no package named "@yunseorim1116/npm-pack-core" is present in the workspace
 36 error
-36 error This error happened while installing a direct dependency of /Users/tree/Documents/npm-pack-count/npm-pack-count/packages/cli
+36 error This error happened while installing a direct dependency of /Users/tree/Documents/npm-pack-count/npm-pack-count/packages/core
 36 error
 36 error Packages found in the workspace: @yunseorim1116/npm-pack-count, @yunseorim1116/npm-pack-cli, @yunseorim1116/npm-count-core
 36 error     at makeError (/Users/tree/Documents/npm-pack-count/npm-pack-count/node_modules/.pnpm/execa@5.0.0/node_modules/execa/lib/error.js:59:11)
