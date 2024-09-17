@@ -8,7 +8,9 @@
     "pack-count": "ts-node index.ts"
   },
   "dependencies": {
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "@yunseorim1116/core": "workspace:*",
+    "@yunseorim1116/cli": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.4.2",

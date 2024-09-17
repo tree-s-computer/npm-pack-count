@@ -1,21 +1,11 @@
-import DownloadTracker from '@packages/core/controllers/DownloadTrackerController';
-
-const packages = ['@sd-jwt/core'];
-
-const numberOfWeeks = 10;
-
-async function measurePerformance(callback) {
-  const startTime = Date.now();
-  await callback();
-  const endTime = Date.now();
-  const executionTime = endTime - startTime;
-  console.log(`Execution time: ${executionTime / 1000} seconds`);
-}
+import DownloadTracker from '@yunseorim1116/core';
 
 (async () => {
-  await measurePerformance(async () => {
-    const tracker = new DownloadTracker(packages, numberOfWeeks);
-    const datas = await tracker.start();
-    console.log(datas);
-  });
+  const packages = ['axios', '@types/axios'];
+  const numberOfWeeks = 6;
+
+  // The first argument is an array of package names, the second argument is the desired number of weeks
+  const tracker = new DownloadTracker(packages, numberOfWeeks);
+  const datas = await tracker.start();
+  console.log(datas);
 })();

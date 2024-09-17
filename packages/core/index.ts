@@ -1,2 +1,2 @@
-import DownloadTracker from './controllers/DownloadTrackerController';
+import DownloadTracker from './src/controllers/DownloadTrackerController';
 export default DownloadTracker;

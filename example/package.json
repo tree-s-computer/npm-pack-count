@@ -1,5 +1,5 @@
 {
-  "name": "@yunseorim1116/npm-count-example",
+  "name": "npm-count-example",
   "version": "0.1.0",
   "description": "example functions for npm-pack-count",
   "main": "dist/index.js",
@@ -12,6 +12,10 @@
     "tsx": "^4.7.1",
     "prettier": "3.2.5",
     "vitest": "^1.4.0"
+  },
+  "dependencies": {
+    "@yunseorim1116/core": "workspace:*",
+    "@yunseorim1116/cli": "workspace:*"
   },
   "files": [
     "dist"
