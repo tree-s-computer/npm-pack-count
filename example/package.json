@@ -2,21 +2,13 @@
   "name": "npm-count-example",
   "version": "0.1.0",
   "description": "example functions for npm-pack-count",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
-    "pack-count": "ts-node index.ts"
+    "pack-count": "ts-node ./src/index.ts"
   },
   "devDependencies": {
     "prettier": "3.2.5",
     "tsx": "^4.7.1",
     "typescript": "^5.4.2",
     "vitest": "^1.4.0"
-  },
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "@yunseorim1116/npm-pack-cli": "workspace:^"
   }
 }
