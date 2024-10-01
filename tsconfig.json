@@ -8,11 +8,11 @@
       "@packages/*": ["packages/*"],
       "@example/*": ["example/*"]
     },
-    "esModuleInterop": true,
+    "esModuleInterop": true, //CommonJS 모듈을 사용할 때 ES6 모듈과의 호환성을 제공하는 설정
     "forceConsistentCasingInFileNames": true,
     "strict": false,
     "skipLibCheck": true,
-    "declaration": true
+    "declaration": true //TypeScript 컴파일 시 .d.ts 파일(타입 정의 파일)을 생성, 이 설정을 통해 라이브러리를 사용할 때 해당 라이브러리의 타입 정의를 제공할 수 있음.
   },
   "include": ["packages/core/src/**/*", "example/src/*"],
   "exclude": ["node_modules", "packages/core/src/**/*.spec.ts"]
